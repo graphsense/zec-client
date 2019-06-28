@@ -1,11 +1,7 @@
-FROM bitnami/minideb:stretch
+FROM ubuntu:18.04 as builder
 LABEL maintainer="rainer.stuetz@ait.ac.at"
 
-RUN useradd -r -u 10000 dockeruser && \
-    mkdir -p /opt/graphsense/data && \
-    chown dockeruser /opt/graphsense && \
-    # packages
-    apt-get update && \
+RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         automake \
         autoconf \
@@ -27,7 +23,6 @@ RUN useradd -r -u 10000 dockeruser && \
         wget \
         zlib1g-dev
 
-ADD docker/zcash.conf /opt/graphsense/zcash.conf
 ADD docker/Makefile /tmp/Makefile
 RUN cd /tmp && \
     make install && \
@@ -46,10 +41,20 @@ RUN cd /tmp && \
         perl \
         zlib1g-dev && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    mkdir /home/dockeruser && \
-    mv /root/.zcash-params /home/dockeruser && \
-    chown -R dockeruser /home/dockeruser
+    rm -rf /var/lib/apt/lists/*
+
+FROM ubuntu:18.04
+
+COPY --from=builder /usr/local/bin/zcash* /usr/local/bin/
+COPY --from=builder /root/.zcash-params /home/dockeruser/.zcash-params
+
+ADD docker/zcash.conf /opt/graphsense/zcash.conf
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y libgomp1 && \
+    useradd -r -u 10000 dockeruser && \
+    mkdir -p /opt/graphsense/data && \
+    chown dockeruser /opt/graphsense
 
 USER dockeruser
 EXPOSE 8632
