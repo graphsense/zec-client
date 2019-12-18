@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Changed
-- Updated Zcash client to v2.0.7-2
+- Updated Zcash client to v2.1.0-1
+- Using --cap-drop all option in docker run command
 
 ## [0.4.1] - 2019-06-28
 ### Changed
