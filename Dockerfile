@@ -1,5 +1,5 @@
 FROM ubuntu:18.04 as builder
-LABEL maintainer="rainer.stuetz@ait.ac.at"
+LABEL maintainer="contact@graphsense.info"
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
