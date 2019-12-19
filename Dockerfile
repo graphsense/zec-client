@@ -1,5 +1,5 @@
 FROM ubuntu:18.04 as builder
-LABEL maintainer="rainer.stuetz@ait.ac.at"
+LABEL maintainer="contact@graphsense.info"
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
@@ -54,7 +54,7 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y libgomp1 && \
     useradd -r -u 10000 dockeruser && \
     mkdir -p /opt/graphsense/data && \
-    chown dockeruser /opt/graphsense
+    chown dockeruser -R /opt/graphsense
 
 USER dockeruser
 EXPOSE 8632
