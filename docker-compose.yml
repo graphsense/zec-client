@@ -20,4 +20,5 @@ services:
 
 networks:
   graphsense-net:
-    driver: "bridge"
+    name: graphsense-global-net
+
