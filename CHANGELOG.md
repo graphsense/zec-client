@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.4.3] - 2020-05-11
+### Changed
+- Updated Zcash client to v2.1.1
+- Added Docker Compose file
+- Removed options rpcuser/rpcpassword (deprecated)
+
 ## [0.4.2] - 2019-12-19
 ### Changed
 - Updated Zcash client to v2.1.0-1

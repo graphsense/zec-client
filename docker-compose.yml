@@ -1,0 +1,23 @@
+version: "3.5"
+
+services:
+
+  zcash-client:
+    image: zcash
+    container_name: zcash
+    hostname: zcash
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./data/:/opt/graphsense/data
+    networks:
+      - graphsense-net
+    ports:
+      - 8632:8632
+    command: ["zcashd", "-conf=/opt/graphsense/zcash.conf", "-datadir=/opt/graphsense/data", "-rest", "-printtoconsole"]
+    restart: always
+
+networks:
+  graphsense-net:
+    name: graphsense-global-net
