@@ -1,5 +1,5 @@
 install:
-	git clone --depth=1 -b v3.0.0 https://github.com/zcash/zcash.git src && \
+	git clone --depth=1 -b v4.0.0 https://github.com/zcash/zcash.git src && \
 	cd src && \
 	bash ./zcutil/fetch-params.sh && \
 	bash ./zcutil/build.sh -j4 && \
