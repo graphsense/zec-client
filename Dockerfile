@@ -1,7 +1,11 @@
-FROM ubuntu:18.04 as builder
+FROM ubuntu:20.04 as builder
 LABEL maintainer="contact@graphsense.info"
 
-RUN apt-get update && \
+ENV TZ=UTC
+ADD docker/Makefile /tmp/Makefile
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone && \
+    apt-get update && \
     apt-get install --no-install-recommends -y \
         automake \
         autoconf \
@@ -21,29 +25,12 @@ RUN apt-get update && \
         procps \
         unzip \
         wget \
-        zlib1g-dev
-
-ADD docker/Makefile /tmp/Makefile
-RUN cd /tmp && \
-    make install && \
-    cd / && \
-    rm -rf /tmp/src && \
-    apt-get autoremove --purge -y \
-        autoconf \
-        automake \
-        binutils \
-        build-essential \
-        gcc \
-        git \
-        libevent-dev \
-        libgcc-6-dev \
-        libssl-dev \
-        perl \
         zlib1g-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    cd /tmp && \
+    make install && \
+    strip /usr/local/bin/zcash*
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 COPY --from=builder /usr/local/bin/zcash* /usr/local/bin/
 COPY --from=builder /root/.zcash-params /home/dockeruser/.zcash-params
