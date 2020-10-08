@@ -45,3 +45,4 @@ RUN apt-get update && \
 
 USER dockeruser
 EXPOSE 8632
+CMD ["zcashd", "-conf=/opt/graphsense/zcash.conf", "-datadir=/opt/graphsense/data", "-rest", "-printtoconsole"]
