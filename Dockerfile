@@ -18,6 +18,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
         git \
         libevent-dev \
         libgomp1 \
+        libncurses5 \
         libssl-dev \
         libtool \
         m4 \
