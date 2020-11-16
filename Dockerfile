@@ -36,13 +36,13 @@ FROM ubuntu:20.04
 COPY --from=builder /usr/local/bin/zcash* /usr/local/bin/
 COPY --from=builder /root/.zcash-params /home/dockeruser/.zcash-params
 
-ADD docker/zcash.conf /opt/graphsense/zcash.conf
-
 RUN apt-get update && \
     apt-get install --no-install-recommends -y libgomp1 && \
     useradd -r -u 10000 dockeruser && \
     mkdir -p /opt/graphsense/data && \
     chown dockeruser -R /opt/graphsense
+
+ADD docker/zcash.conf /opt/graphsense/zcash.conf
 
 USER dockeruser
 EXPOSE 8632
