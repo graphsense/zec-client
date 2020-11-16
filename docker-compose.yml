@@ -15,7 +15,6 @@ services:
       - graphsense-net
     ports:
       - 8632:8632
-    command: ["zcashd", "-conf=/opt/graphsense/zcash.conf", "-datadir=/opt/graphsense/data", "-rest", "-printtoconsole"]
     restart: always
 
 networks:

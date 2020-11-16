@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.4.5] - 2020-11-16
+### Changed
+- Use shallow clone with truncated history ([#6](https://github.com/graphsense/btc-client/issues/6))
+- Updated Zcash client to v4.1.0
+- Changed Docker base image to Ubuntu 20.04
+
 ## [0.4.4] - 2020-06-12
 ### Changed
 - Updated Zcash client to v3.0.0
