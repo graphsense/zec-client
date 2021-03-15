@@ -40,8 +40,8 @@ The data directory on the host system must be writeable by user `dockeruser`.
 
 ## Usage
 
-Building the docker container (a tagged GitHub version of Zcash is
-specified in `docker/Makefile`):
+Building the docker container (the Zcash is version is specified in the
+`Dockerfile`):
 
     docker-compose build
 
