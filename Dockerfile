@@ -27,7 +27,7 @@ ADD docker/zcash.conf /opt/graphsense/zcash.conf
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y wget ca-certificates && \
-    useradd -m -u ${UID} dockeruser && \
+    useradd -m -u $UID dockeruser && \
     mkdir -p /opt/graphsense/data && \
     chown dockeruser -R /opt/graphsense && \
     zcash-fetch-params && \
