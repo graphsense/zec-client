@@ -1,48 +1,38 @@
 FROM ubuntu:20.04 as builder
 LABEL maintainer="contact@graphsense.info"
 
+ARG VERSION=4.4.0
+
 ENV TZ=UTC
-ADD docker/Makefile /tmp/Makefile
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone && \
     apt-get update && \
     apt-get install --no-install-recommends -y \
-        automake \
-        autoconf \
-        autotools-dev \
-        binutils \
-        bsdmainutils \
-        build-essential \
+        apt-transport-https \
         ca-certificates \
-        curl \
-        git \
-        libevent-dev \
-        libgomp1 \
-        libncurses5 \
-        libssl-dev \
-        libtool \
-        m4 \
-        pkg-config \
-        procps \
-        unzip \
-        wget \
-        zlib1g-dev && \
-    cd /tmp && \
-    make install && \
-    strip /usr/local/bin/zcash*
+        gnupg2 \
+        wget && \
+    wget -qO - https://apt.z.cash/zcash.asc | gpg2 --import && \
+    gpg2 --export 3FE63B67F85EA808DE9B880E6DEF3BAF272766C0 | apt-key add - && \
+    echo "deb [arch=amd64] https://apt.z.cash/ stretch main" | tee /etc/apt/sources.list.d/zcash.list && \
+    apt-get update && \
+    apt-get install zcash=$VERSION
 
 FROM ubuntu:20.04
 
-COPY --from=builder /usr/local/bin/zcash* /usr/local/bin/
-COPY --from=builder /root/.zcash-params /home/dockeruser/.zcash-params
+ARG UID=10000
+
+COPY --from=builder /usr/bin/zcash* /usr/local/bin/
+ADD docker/zcash.conf /opt/graphsense/zcash.conf
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y libgomp1 && \
-    useradd -r -u 10000 dockeruser && \
+    apt-get install --no-install-recommends -y wget ca-certificates && \
+    useradd -m -u $UID dockeruser && \
     mkdir -p /opt/graphsense/data && \
-    chown dockeruser -R /opt/graphsense
-
-ADD docker/zcash.conf /opt/graphsense/zcash.conf
+    chown dockeruser -R /opt/graphsense && \
+    zcash-fetch-params && \
+    mv /root/.zcash-params/ /home/dockeruser/.zcash-params && \
+    chown dockeruser:dockeruser /home/dockeruser/.zcash-params
 
 USER dockeruser
 EXPOSE 8632
