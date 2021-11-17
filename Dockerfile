@@ -1,7 +1,7 @@
 FROM ubuntu:20.04 as builder
 LABEL maintainer="contact@graphsense.info"
 
-ARG VERSION=4.4.0
+ARG VERSION=4.5.1+1
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
@@ -23,7 +23,7 @@ FROM ubuntu:20.04
 ARG UID=10000
 
 COPY --from=builder /usr/bin/zcash* /usr/local/bin/
-ADD docker/zcash.conf /opt/graphsense/zcash.conf
+ADD docker/client.conf /opt/graphsense/client.conf
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y wget ca-certificates && \
@@ -36,4 +36,4 @@ RUN apt-get update && \
 
 USER dockeruser
 EXPOSE 8632
-CMD ["zcashd", "-conf=/opt/graphsense/zcash.conf", "-datadir=/opt/graphsense/data", "-rest", "-printtoconsole"]
+CMD ["zcashd", "-conf=/opt/graphsense/client.conf", "-datadir=/opt/graphsense/data", "-rest", "-printtoconsole"]
