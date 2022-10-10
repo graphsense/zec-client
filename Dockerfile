@@ -1,7 +1,7 @@
 FROM ubuntu:20.04 as builder
 LABEL maintainer="contact@graphsense.info"
 
-ARG VERSION=5.0.0
+ARG VERSION=5.2.0
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
