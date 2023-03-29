@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## Unreleased
+### Changed
+- Updated Zcash client to v5.4.2
+
 ## [23.01/1.3.0] - 2023-01-30
 ### Added
 - Updated Zcash client to v5.3.2
