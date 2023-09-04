@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [(unreleased)/1.5.1] - 2023-09-04
+### Changed
+- Updated Zcash public signing key
+
 ## [23.06/1.5.0] - 2023-06-12
 ### Changed
 - Updated Zcash client to v5.5.1

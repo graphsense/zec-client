@@ -13,8 +13,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
         gnupg2 \
         wget && \
     wget -qO - https://apt.z.cash/zcash.asc | gpg2 --import && \
-    gpg2 --export 3FE63B67F85EA808DE9B880E6DEF3BAF272766C0 | apt-key add - && \
-    echo "deb [arch=amd64] https://apt.z.cash/ stretch main" | tee /etc/apt/sources.list.d/zcash.list && \
+    gpg2 --export B1C9095EAA1848DBB54D9DDA1D05FDC66B372CFE | apt-key add - && \
+    echo "deb [arch=amd64] https://apt.z.cash/ bullseye main" | tee /etc/apt/sources.list.d/zcash.list && \
     apt-get update && \
     apt-get install zcash=$VERSION
 
