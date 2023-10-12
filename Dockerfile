@@ -1,7 +1,7 @@
 FROM ubuntu:20.04 as builder
 LABEL maintainer="contact@graphsense.info"
 
-ARG VERSION=5.6.1
+ARG VERSION=5.7.0
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
@@ -29,10 +29,11 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y wget ca-certificates && \
     useradd -m -u $UID dockeruser && \
     mkdir -p /opt/graphsense/data && \
-    chown dockeruser -R /opt/graphsense && \
-    zcash-fetch-params && \
-    mv /root/.zcash-params/ /home/dockeruser/.zcash-params && \
-    chown dockeruser:dockeruser /home/dockeruser/.zcash-params
+    chown dockeruser -R /opt/graphsense
+# Deprecated since 5.7.0
+#    zcash-fetch-params && \
+#    mv /root/.zcash-params/ /home/dockeruser/.zcash-params && \
+#    chown dockeruser:dockeruser /home/dockeruser/.zcash-params
 
 USER dockeruser
 EXPOSE 8632
