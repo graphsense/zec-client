@@ -1,5 +1,9 @@
 FROM ubuntu:20.04 as builder
-LABEL maintainer="contact@graphsense.info"
+LABEL org.opencontainers.image.title="zec-client"
+LABEL org.opencontainers.image.maintainer="contact@ikna.io"
+LABEL org.opencontainers.image.url="https://www.ikna.io/"
+LABEL org.opencontainers.image.description="Dockerized Zcash client"
+LABEL org.opencontainers.image.source="https://github.com/graphsense/zec-client"
 
 ARG VERSION=5.7.0
 
