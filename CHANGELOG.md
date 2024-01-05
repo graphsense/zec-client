@@ -3,9 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [24.01/1.9.0] - 2024-01-03
+## [24.01.0] - 2024-01-05
 ### Changed
 - Updated Zcash version v5.7.0 -> v5.8.0
+- retired semantic versions, new versions are based on vYEAR.MONTH.VERSION
 
 ## [23.09/1.8.0] - 2023-10-12
 ### Changed
