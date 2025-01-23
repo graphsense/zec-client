@@ -5,7 +5,7 @@ LABEL org.opencontainers.image.url="https://www.ikna.io/"
 LABEL org.opencontainers.image.description="Dockerized Zcash client"
 LABEL org.opencontainers.image.source="https://github.com/graphsense/zec-client"
 
-ARG VERSION=6.0.0
+ARG VERSION=6.1.0
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
