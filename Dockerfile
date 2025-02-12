@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as builder
+FROM ubuntu:24.04 as builder
 LABEL org.opencontainers.image.title="zec-client"
 LABEL org.opencontainers.image.maintainer="contact@ikna.io"
 LABEL org.opencontainers.image.url="https://www.ikna.io/"
@@ -22,7 +22,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     apt-get update && \
     apt-get install zcash=$VERSION
 
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 ARG UID=10000
 
