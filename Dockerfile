@@ -23,4 +23,5 @@ ADD docker/zebrad-config.toml /opt/graphsense/zebrad-config.toml
 # USER dockeruser
 EXPOSE 8632
 
-ENTRYPOINT zebrad -c=/opt/graphsense/zebrad-config.toml
+# ENTRYPOINT zebrad -c=/opt/graphsense/zebrad-config.toml
+ENTRYPOINT ["zebrad", "-c=/opt/graphsense/zebrad-config.toml"]
