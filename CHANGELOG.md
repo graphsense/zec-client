@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [25.04.0] - 2025-08-07
+### Changed
+- Updated Zcash version v6.3.0 -> v6.3.0
+
 ## [25.04.0] - 2025-04-22
 ### Changed
 - update container to ubuntu 24.04
