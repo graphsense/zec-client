@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [25.10.0zebra-dev1] - 2025-10-20
+### Changed
+- bump to zebra 2.5.0
+
 
 ## [25.05.0rc2] - 2025-05-12
 ### Changed
