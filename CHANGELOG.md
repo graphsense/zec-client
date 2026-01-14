@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.01.0] - 2026-01-14
+### Changed
+- Updated Zcash version v6.10.0 -> v6.11.0
+
+
 ## [25.10.0] - 2025-10-20
 ### Changed
 - Updated Zcash version v6.3.0 -> v6.10.0
