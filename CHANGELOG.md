@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.04.0zebra] - 2026-4-1
+### Changed
+- bump to zebra 4.3.0
+
+
 ## [26.01.0zebra] - 2026-1-14
 ### Changed
 - bump to zebra 3.1.0
