@@ -1,4 +1,4 @@
-RELEASE := 'v26.05.0zebra'
+RELEASE := 'v26.06.0zebra'
 # RELEASESEM := 'v1.9.0'
 
 all: build
