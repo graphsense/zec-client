@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.source="https://github.com/graphsense/zec-client"
 
 # Bump to the NU6.2 zcashd release (branch id 5437f330) as soon as it lands on apt.z.cash/bookworm.
 # 6.12.3 has no NU6.2 support and forks off at height 3364600; this pin only keeps the image buildable meanwhile.
-ARG VERSION=6.12.3
+ARG VERSION=6.20.0
 
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
