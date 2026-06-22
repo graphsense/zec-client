@@ -3,39 +3,41 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-
-## [26.06.0] - 2026-06-3
+## [26.06.0zebra] - 2026-06-03
 ### Changed
-- Updated Zcash version v6.12.3 -> v6.20.0 (NU6.2 network upgrade, activation height 3364600)
+- bump to zebra 5.0.0 (activates NU6.2 network upgrade at mainnet height 3364600)
 
-## [26.05.1] - 2026-05-8
+## [26.05.0zebra] - 2026-4-20
 ### Changed
-- fix docker build
+- bump to zebra 4.4.1
 
-## [26.05.0] - 2026-05-8
+## [26.04.2zebra] - 2026-4-20
 ### Changed
-- Updated Zcash version v6.12.1 -> v6.12.3
+- bump to zebra 4.3.1
 
-## [26.04.1] - 2026-04-20
+## [26.04.1zebra] - 2026-4-20
 ### Changed
-- Updated Zcash version v6.12.0 -> v6.12.1
+- bump to zebra 4.4.0
 
-## [26.04.0] - 2026-04-1
+## [26.04.0zebra] - 2026-4-1
 ### Changed
-- Updated Zcash version v6.11.0 -> v6.12.0
+- bump to zebra 4.3.0
 
-## [26.01.0] - 2026-01-14
+
+## [26.01.0zebra] - 2026-1-14
 ### Changed
-- Updated Zcash version v6.10.0 -> v6.11.0
+- bump to zebra 3.1.0
 
 
-## [25.10.0] - 2025-10-20
+## [25.10.0zebra-dev1] - 2025-10-20
 ### Changed
-- Updated Zcash version v6.3.0 -> v6.10.0
+- bump to zebra 2.5.0
 
-## [25.04.0] - 2025-08-07
+
+## [25.05.0rc2] - 2025-05-12
 ### Changed
-- Updated Zcash version v6.3.0 -> v6.3.0
+- BREAKING: REQUIRES RESYNC switching to zebra since zcashd is about to be retired
+- switch to zebra 2.3.0
 
 ## [25.04.0] - 2025-04-22
 ### Changed

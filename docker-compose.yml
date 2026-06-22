@@ -1,5 +1,3 @@
-version: "3.5"
-
 services:
 
   zcash-client:
@@ -19,4 +17,4 @@ services:
 
 networks:
   graphsense-net:
-    name: graphsense-global-net
+    name: graphsense-net
