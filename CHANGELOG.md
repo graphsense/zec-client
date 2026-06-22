@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.0] - 2026-06-22
+### Changed
+- BREAKING: Zebra is now the mainline node on `master`; the `-zebra` version suffix is dropped (plain versions = Zebra, going forward).
+- BREAKING: REQUIRES RESYNC when migrating from a zcashd-based image (incompatible on-disk state).
+- The legacy zcashd variant is maintained on the `zcashd` branch; its releases now carry a `zcashd` suffix (e.g. `v26.07.0zcashd`).
+- ships zebra 5.0.0 (activates NU6.2 network upgrade at mainnet height 3364600)
+
 ## [26.06.0zebra] - 2026-06-03
 ### Changed
 - bump to zebra 5.0.0 (activates NU6.2 network upgrade at mainnet height 3364600)

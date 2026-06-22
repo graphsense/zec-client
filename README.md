@@ -1,46 +1,44 @@
 # Zcash Docker container
 
-A Docker container running [Zcash][zcash] as a service and
-exposing the REST API.
+A Docker container running [Zcash][zcash] as a service via the
+[Zebra][zebra] full node and exposing the RPC API.
+
+> **Breaking change (v26.07.0):** the mainline now ships [Zebra][zebra]
+> instead of `zcashd`. Switching from a `zcashd`-based image **requires a
+> full resync** — the on-disk state is not compatible. The legacy
+> `zcashd` variant is kept for maintenance on the [`zcashd`](https://github.com/graphsense/zec-client/tree/zcashd)
+> branch.
 
 ## Prerequisites
 
 - [Docker][docker], see e.g. https://docs.docker.com/engine/install/
 - Docker Compose: https://docs.docker.com/compose/install/
 
-Ensure that a user `dockeruser` with ID `10000` exists on your local system.
-
 ## Configuration
 
-Modify `docker/zcash.conf` according to your environment. 
-Configure `rpcallowip=...` to allow the client/daemon to accept
-RPC connections outside the localhost and set an RPC username (`rpcuser`)
-and password (`rpcpassword`).
-
-Make sure your config file includes the following line:
-
-    txindex=1
+Modify `docker/zebrad-config.toml` according to your environment. The
+default configuration runs on `Mainnet` and exposes the RPC server on
+port `8632`. Adjust the `[network]`, `[rpc]` and `[state]` sections as
+needed; the full set of options is documented in the
+[Zebra config reference][zebra-config].
 
 Client data is persisted on the host machine using a Docker volume.
 In the default setting the local directory `./data` is mapped to
-to `/opt/graphsense/data` inside the container. To override these
-settings a Docker Compose override file can be used, e.g.
+`/opt/graphsense/data` inside the container (used by Zebra for both the
+network cache and the state cache). To override these settings a Docker
+Compose override file can be used, e.g.
 
 ```
 > cat docker-compose.override.yml
-version: "3.1"
-
 services:
   zcash-client:
     volumes:
       - /var/data/graphsense/clients/zec:/opt/graphsense/data
 ```
 
-The data directory on the host system must be writeable by user `dockeruser`.
-
 ## Usage
 
-Building the docker container (the Zcash is version is specified in the
+Building the docker container (the Zebra version is specified in the
 `Dockerfile`):
 
     docker-compose build
@@ -55,4 +53,6 @@ Showing log information:
 
 
 [zcash]: https://z.cash
+[zebra]: https://github.com/ZcashFoundation/zebra
+[zebra-config]: https://docs.rs/zebrad/latest/zebrad/config/struct.ZebradConfig.html
 [docker]: https://www.docker.com
