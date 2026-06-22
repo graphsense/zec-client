@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.1] - 2026-06-22
+### Changed
+- bump to zebra 5.2.0 (non-breaking; no resync required)
+  - 5.1.0: fixes a genesis-to-tip sync stall during initial block download
+  - 5.1.1: lowers the end-of-support window ahead of the NU7 network upgrade (expected end of July 2026)
+  - 5.2.0: increases the local rollback window (MAX_BLOCK_REORG_HEIGHT) from 99 to 1000 blocks
+
 ## [26.07.0] - 2026-06-22
 ### Changed
 - BREAKING: Zebra is now the mainline node on `master`; the `-zebra` version suffix is dropped (plain versions = Zebra, going forward).
