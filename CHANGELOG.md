@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.2] - 2026-07-13
+### Changed
+- bump to zebra 6.0.0 (no resync required; the state database migrates in place to format 28.0.0 on first start)
+  - activates the NU6.3 (Ironwood) network upgrade at mainnet height 3428143 (~2026-07-28); upgrading before that height is mandatory
+  - rejects mempool transactions with non-standard transparent inputs before script verification (DoS fix)
+  - end of support at block 3528960 (~105 days after release)
+
 ## [26.07.1] - 2026-06-22
 ### Changed
 - bump to zebra 5.2.0 (non-breaking; no resync required)
