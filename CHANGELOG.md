@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.3] - 2026-07-17
+### Changed
+- bump to zebra 6.1.0 (non-breaking; no resync required)
+  - adds the `getstandardfee` RPC method (ZIP-317 marginal fee)
+  - security: fixes a sync stall caused by peers sending rejected block bodies for valid header hashes
+  - security: removes quadratic overhead in transparent value validation for transaction-heavy blocks
+  - security: penalizes peers that send consensus-invalid transactions
+
 ## [26.07.2] - 2026-07-13
 ### Changed
 - bump to zebra 6.0.0 (no resync required; the state database migrates in place to format 28.0.0 on first start)
