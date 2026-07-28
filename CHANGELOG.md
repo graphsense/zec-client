@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.2] - 2026-07-28
+### Changed
+- bump to zebra 5.2.0 -> 6.2.3 (no resync required; the state database migrates in place)
+  - 6.0.0: activates the NU6.3 (Ironwood) network upgrade at mainnet height 3428143;
+    state database format upgraded to 28.0.0 (in-place migration, adds four `ironwood_*`
+    column families); `z_gettreestate`, `z_getsubtreesbyindex` and verbose `getblock`
+    now expose Ironwood note commitment trees
+  - 6.1.0: new `getstandardfee` RPC (ZIP-317 marginal fee); block template and
+    transaction validation hardening
+  - 6.2.0: experimental zcashd-compat sidecar mode (unused here); regtest-only
+    `generatetoaddress` RPC
+  - 6.2.1: testnet minimum-difficulty `getblocktemplate` fix; mempool CPU-exhaustion mitigation
+  - 6.2.2: `getblock`, `getblockheader` and `gettxout` now pin their state queries to a
+    block hash for consistent responses; faster first peer disk-cache write
+  - 6.2.3: peer set connectivity fixes (outbound slots no longer held by non-serving peers,
+    dropped connections replaced proactively, larger `getaddr` responses)
+
 ## [26.07.1] - 2026-06-22
 ### Changed
 - bump to zebra 5.2.0 (non-breaking; no resync required)
