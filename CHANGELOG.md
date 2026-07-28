@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.4] - 2026-07-28
+### Changed
+- bump to zebra 6.2.3 (non-breaking; no resync required)
+  - 6.2.0: experimental zcashd-compat sidecar mode (unused here); regtest-only
+    `generatetoaddress` RPC
+  - 6.2.1: testnet minimum-difficulty `getblocktemplate` fix; mempool CPU-exhaustion mitigation
+  - 6.2.2: `getblock`, `getblockheader` and `gettxout` now pin their state queries to a
+    block hash for consistent responses; faster first peer disk-cache write
+  - 6.2.3: peer set connectivity fixes (outbound slots no longer held by non-serving peers,
+    dropped connections replaced proactively, larger `getaddr` responses)
+
 ## [26.07.3] - 2026-07-17
 ### Changed
 - bump to zebra 6.1.0 (non-breaking; no resync required)
