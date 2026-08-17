@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.07.5] - 2026-08-17
+### Changed
+- bump to zebra 6.3.0 (non-breaking; no resync required, state format stays at 28.0.0)
+  - security: canonicalizes IPv4-mapped IPv6 inbound peers, so bans apply and the per-IP
+    inbound limit counts them once (GHSA-g95h-hw6g-pvgv, GHSA-qhr3-cvch-5fh2,
+    GHSA-8hh2-hrf2-cqf4 also fix tip-discovery delay via forged coinbase heights, honest
+    peers being banned during IBD, and gossiped invalid blocks never being scored)
+  - fixes a sync stall: a peer's only unknown block hash in a short `FindBlocks` response is
+    now downloaded, so nodes near the tip keep advancing
+  - rejects blocks whose total chain value pool would exceed `MAX_MONEY`
+  - `getblocksubsidy` returns NU6-era funding stream metadata for NU6.1+ (amounts unaffected)
+  - adds the `getdeprecationinfo` RPC; adds `seeder.zec.rocks` DNS seeders
+  - end of support moves to block 3564960 (~105 days after the 6.3.0 release height 3444000)
+
 ## [26.07.4] - 2026-07-28
 ### Changed
 - bump to zebra 6.2.3 (non-breaking; no resync required)
