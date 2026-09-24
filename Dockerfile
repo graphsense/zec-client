@@ -1,4 +1,4 @@
-FROM zfnd/zebra:6.3.0
+FROM zfnd/zebra:6.4.1
 LABEL org.opencontainers.image.title="zec-client"
 LABEL org.opencontainers.image.maintainer="contact@ikna.io"
 LABEL org.opencontainers.image.url="https://www.ikna.io/"

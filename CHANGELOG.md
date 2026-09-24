@@ -3,6 +3,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.09.1] - 2026-09-24
+### Changed
+- bump to zebra 6.4.1 (non-breaking; no resync required, state format stays at 28.0.0)
+  - **end of support moves earlier to ~2026-11-02** (halt window shortened from 15 to 12 weeks)
+    ahead of NU7 (tentatively 2026-11-05); the next zebra release is expected to add NU7 support
+    and must be deployed before then
+  - mempool minimum fee lowered to 1000 zatoshis per ZIP-317 logical action (was 5000);
+    `getstandardfee` now reports 1000
+  - equal-work chain forks are now resolved in favor of the tip received first (protocol-conformant)
+  - `rpc.max_response_body_size` capped at 4,294,967,295 bytes (not set here)
+  - peer limits and bans now apply per IPv6 `/64`; bans expire after 24 hours
+  - Orchard/Ironwood/Sapling bundle verification results are cached between mempool and block validation
+  - new experimental lightwalletd gRPC server (`rpc.lightwalletd_listen_addr`, unused here) and
+    value pool metrics
+  - fixes: syncer restart loops on transient UTXO lookup timeouts near the tip; `z_gettreestate`
+    null commitments during concurrent reorgs; mempool peer download slots leaking on timeouts
+  - security: GHSA-4f6v-mj46-gxg3 (coinbase scriptSig rewrite), GHSA-3c94-hf7p-g5mf (forged block
+    bodies stalling the syncer); peers advertising blocks with duplicate transactions are scored
+  - 6.4.1: fixes a permanent sync stall after a sync restart near the chain tip introduced in 6.4.0
+
 ## [26.07.5] - 2026-08-17
 ### Changed
 - bump to zebra 6.3.0 (non-breaking; no resync required, state format stays at 28.0.0)
