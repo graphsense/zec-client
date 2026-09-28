@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.09.2] - 2026-09-28
+### Changed
+- bump to zebra 6.4.2 (security release; non-breaking, no resync required, state format stays at 28.0.0)
+  - security: GHSA-h5rr-8pqv-grp9 (remotely triggerable denial of service when processing
+    malformed V6 transactions)
+
 ## [26.09.1] - 2026-09-24
 ### Changed
 - bump to zebra 6.4.1 (non-breaking; no resync required, state format stays at 28.0.0)
