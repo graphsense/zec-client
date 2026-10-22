@@ -3,6 +3,31 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.10.0] - 2026-10-22
+### Changed
+- bump to zebra 7.0.0 (**mandatory upgrade**: activates NU7 on mainnet at height 3,543,405 and
+  advertises protocol version 170190; nodes must be upgraded before that height)
+  - **database format moves from v28 to v29**: the existing state is migrated in place on first
+    start (no resync), but zebra 6.x cannot read v29, so rolling back requires a full resync.
+    Back up `data/state/v28` before deploying
+  - **shorter support window**: this release halts ~56 days (8 weeks instead of 12) after its
+    estimated release height; plan the next bump accordingly
+  - NU7 consensus: ZIP 218 25-second block spacing (halving intervals tripled, per-block rewards
+    divided by three), per-block shielded action limits, NSM value pool and reissuance (ZIP 237)
+  - `getstandardfee` reports 5000 zatoshis per logical action until height 3,590,000, then 1000;
+    the mempool keeps accepting 1000
+  - `getblocktemplate` no longer lists `transactions`/`prevblock` as mutable (mining only, unused here)
+  - `getaddresstxids`/`getaddressutxos` return an error for queries matching more than 100,000
+    results, and address RPCs accept at most 10,000 addresses; page with `startHeight`/`maxEntries`
+  - per-peer labels removed from peer/connection metrics (metrics endpoint not enabled here)
+  - Testnet/Regtest/custom-network configuration validation is stricter (mainnet config unaffected)
+  - sync robustness: fewer near-tip stalls, better peer rotation for block discovery, retries
+    from other peers on failed block requests
+  - security: GHSA-9hq5-pfgc-cx5h and GHSA-2w9f-9wx8-f5c8 (initial sync stalls via forged
+    checkpoint block bodies), GHSA-6v36-c42v-v98p (panic on peer disconnect),
+    GHSA-jq45-ghw5-v37x (peers sending invalid transparent scripts are now banned), quadratic
+    CPU cost in coinbase maturity checks (regression from 6.4.0), per-IP mempool download cap
+
 ## [26.09.2] - 2026-09-28
 ### Changed
 - bump to zebra 6.4.2 (security release; non-breaking, no resync required, state format stays at 28.0.0)
