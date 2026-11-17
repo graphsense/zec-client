@@ -3,6 +3,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.11.0] - 2026-11-17
+### Changed
+- bump to zebra 7.1.0 (security release fixing ten advisories; no consensus changes, state format
+  stays at v29, so no migration or resync; 7.0.0 can still open the state if we need to roll back)
+  - **very short support window**: this release warns from ~3 December 2026 (block 3,638,752) and
+    halts around 10 December 2026 (block ~3,662,944); the next bump must be deployed before then
+  - **memory**: non-finalized state indexes are now capped (~5-7 GB worst case) and shared between
+    forks; 16 GB RAM recommended. During initial sync, queued checkpoint blocks can use up to ~4 GB
+  - the `elasticsearch` feature is removed and its `[state]` config fields now fail to load
+    (not used in our config)
+  - RPC requests without valid cookie credentials now get HTTP 401 with a JSON-RPC error body
+    (cookie auth is disabled in our config)
+  - failed sync rounds now log at WARN; the INFO lines `temporary error obtaining/extending tips`
+    are gone
+  - nodes without outbound peers now re-resolve DNS seeders and retry cached peers every 5 minutes
+    instead of waiting for a restart
+  - security: GHSA-m44m-9r8r-r64j, GHSA-g9rc-89v4-hhvf, GHSA-hvw5-x88g-2q8w, GHSA-7jvw-68q7-xfh4
+    and GHSA-vw2c-5w35-x5q6 (peers stalling initial sync or restarting sync rounds),
+    GHSA-8qxv-5f2c-452c and GHSA-j8gf-c4rj-6jv5 (unbounded memory from queued blocks and blocks
+    dense in transparent outputs), GHSA-hj54-2mfv-4xg8 (OOM via concurrent address balance
+    requests), GHSA-423j-2vj4-j5x4 and GHSA-2wx4-g5cf-32pf (mempool verification CPU waste)
+
 ## [26.10.0] - 2026-10-22
 ### Changed
 - bump to zebra 7.0.0 (**mandatory upgrade**: activates NU7 on mainnet at height 3,543,405 and
